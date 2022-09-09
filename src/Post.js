@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from "react";
 import "./Post.css";
 import { Avatar } from "@mui/material";
 import VerifiedIcon from '@mui/icons-material/Verified';
@@ -7,11 +7,19 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PublishIcon from '@mui/icons-material/Publish';
 
-function Post({ displayName, username, verified, text, image, avatar}) {
+const Post = forwardRef(
+    ({ 
+    displayName, 
+    username,
+    verified, 
+    text, 
+    image, 
+    avatar
+}, ref) => {
   return (
-  <div className="post">
+  <div className="post" ref = {ref}>
     <div className="post__avatar">
-        <Avatar src={avatar}></Avatar>
+        <Avatar src={avatar} />
     </div>
     <div className="post__body">
         <div className="post__header">
@@ -27,7 +35,7 @@ function Post({ displayName, username, verified, text, image, avatar}) {
                 <p>{text}</p>
             </div>
         </div>
-        <img src="https://media3.giphy.com/media/l0EwYGlvQ7STj3wyc/giphy.gif?cid=ecf05e47vd2iep9sl63646p77fc03aoguow3d36bxbims8mj&rid=giphy.gif&ct=g" alt ="gif" />
+        <img src={image} alt ="" />
         <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
                 <RepeatIcon fontSize="small" />
@@ -37,6 +45,6 @@ function Post({ displayName, username, verified, text, image, avatar}) {
     </div>
   </div>
   );
-}
+});
 
 export default Post;
